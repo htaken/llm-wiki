@@ -1,0 +1,201 @@
+{
+  "main": {
+    "id": "cba77733084acdfa",
+    "type": "split",
+    "children": [
+      {
+        "id": "d25bf135935b1121",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6165f02d908e2abb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/sources/AIxSuture.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AIxSuture"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "023eb05b76245e27",
+    "type": "split",
+    "children": [
+      {
+        "id": "6a4fd7e5442a592f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cdc8e46b50bff3d7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "cf415b0eaff696c4",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "a0e091706e1547be",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "507bb58ecd2fa4f9",
+    "type": "split",
+    "children": [
+      {
+        "id": "e95351be0c79e18f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "32f891c23ed4023a",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "バックリンク"
+            }
+          },
+          {
+            "id": "1610644955e9ccfd",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "アウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "71f911991ce4b50b",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "2f83a1f206544aff",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "すべてのプロパティ"
+            }
+          },
+          {
+            "id": "7d4a41d9a124707b",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "アウトライン"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "command-palette:コマンドパレットを開く": false,
+      "bases:新規ベースを作成": false
+    }
+  },
+  "active": "cdc8e46b50bff3d7",
+  "lastOpenFiles": [
+    "wiki/concepts/線形割当問題.md",
+    "wiki/concepts/インスタンスセグメンテーション.md",
+    "wiki/entities/Simple Suture Datasets.md",
+    "wiki/index.md",
+    "wiki/entities/Detectron2.md",
+    "wiki/entities/Mask R-CNN.md",
+    "wiki/sources/Automated measurement extraction for suture quality.md",
+    "wiki/log.md",
+    "wiki/sources/AIxSuture.md",
+    "wiki/concepts/外科技術自動評価.md",
+    "wiki/entities/I3D.md",
+    "wiki/entities/Video Swin Transformer.md",
+    "wiki/entities/Temporal Segment Network.md",
+    "wiki/entities/OSATS.md",
+    "wiki/entities/AIxSuture データセット.md"
+  ]
+}
