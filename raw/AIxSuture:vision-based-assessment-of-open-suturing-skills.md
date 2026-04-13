@@ -26,22 +26,14 @@ Stefanie Speidel and Behrus Puladi have jointly supervised this work.
 - 3 Department of Oral and Maxillofacial Surgery, University Hospital RWTH Aachen, Aachen, Germany
 - 4 Institute for AI in Medicine, University Hospital Essen (AöR), Essen, Germany
 - 5 School of Embedded Composite Artificial Intelligence (SECAI), TUD Dresden University of Technology, Dresden, Germany
-
-## Introduction
-
-It is well known that improving surgical skill greatly improves patient outcome [1]. Common practice in surgical
-
 - 6 Institute of Medical Informatics, University Hospital RWTH Aachen, Aachen, Germany
 - 7 MITZ, University Hospital Carl Gustav Carus, TUD Dresden University of Technology, Dresden, Germany
 - 8 Faculty of Medicine, University Hospital Carl Gustav Carus, Dresden, Germany
 - 9 German Cancer Research Center (DKFZ), Heidelberg, Germany
 - 10 BMBF Research Hub 6G-Life, TUD Dresden University of Technology, Dresden, Germany
+## Introduction
 
-![Image](assets/image_000000_26ed2c2524a92ff2051ae5562a7c88962ef4f8dd3a59e162a55c066250ec26b4.png)
-
-![Image](assets/image_000001_dd43db9ff7b2a1a61b5175f092f8fe70d2de6ac17241e51ca09e4ceef6a49bd0.png)
-
-training is for residents or medical students to assist attending surgeons in the operating room (OR). Attending surgeons or mentors then give feedback based on their subjective observations of the resident in the OR. The issue within this is that involvement in the surgical procedure is coupled to a resident's surgical training. Therefore, the feedback given in this setting is greatly subjective since it depends entirely on the mentoring attending surgeon. This leads to unstructured, inconsistent, and subjective training, consequently, resulting in ineffective learning for trainees. For this purpose, standardized evaluation assessments, procedural checklists, and rating scales have been established [2-4].
+It is well known that improving surgical skill greatly improves patient outcome [1]. Common practice in surgical training is for residents or medical students to assist attending surgeons in the operating room (OR). Attending surgeons or mentors then give feedback based on their subjective observations of the resident in the OR. The issue within this is that involvement in the surgical procedure is coupled to a resident's surgical training. Therefore, the feedback given in this setting is greatly subjective since it depends entirely on the mentoring attending surgeon. This leads to unstructured, inconsistent, and subjective training, consequently, resulting in ineffective learning for trainees. For this purpose, standardized evaluation assessments, procedural checklists, and rating scales have been established [2-4].
 
 To further standardize surgical training it is essential to automate training and feedback mechanisms [5]. Typically, surgical mentors have little time and are costly. To bridge this gap, machine learning models are being developed and adapted to the context of surgical skill assessment. Current popular methods used for surgical skill assessment can be divided into two categories: motion based and video based [6]. Motion-based approaches involve preprocessing the data by extracting or measuring features such as instrument motion [7, 8], force and torque measurements [9], robot kinematics [9], or even eye-tracker data [10].
 
@@ -51,7 +43,7 @@ In general transformers have recently captivated the community. However, few hav
 
 All of these approaches involve minimally invasive (MI) procedures. This is due to the fact that MI surgery requires some form of camera from which video data can be easily collected for further analysis. This is not the case for open surgery. Additionally training for open surgery is still widely unstandardized [16].
 
-![Image](assets/image_000002_4fe597d5a2e3077dcc894610178373f551575c6ca26a3c79855e990ebdd2e686.png)
+![Image|20](assets/image_000002_4fe597d5a2e3077dcc894610178373f551575c6ca26a3c79855e990ebdd2e686.png)
 
 However, receiving objective feedback on training is arguably significantly more important for open surgery given that all practicing surgeons must obtain and hone these skills. Surgical skill assessment datasets for open surgery techniques are rare due to the prospect that videos are not as easily obtained when compared to minimally invasive techniques [3, 17, 18].
 
