@@ -16,7 +16,7 @@ if [ ! -f "$PDF" ]; then
     exit 1
 fi
 
-BASENAME=$(basename "$PDF" .pdf)
+BASENAME=$(basename "$PDF" .pdf | tr ':' '-')
 OUTPUT_DIR=$(dirname "$PDF")
 TMPDIR=$(mktemp -d)
 ASSETS_DIR="${OUTPUT_DIR}/assets/${BASENAME}"

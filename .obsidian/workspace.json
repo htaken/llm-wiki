@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "d25bf135935b1121",
+        "id": "7c2f9de66556f29a",
         "type": "tabs",
         "children": [
           {
-            "id": "6165f02d908e2abb",
+            "id": "213cd4f2ad49233c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "raw/AIxSuture:vision-based-assessment-of-open-suturing-skills.md",
+                "file": "raw/AIxSuture-vision-based-assessment-of-open-suturing-skills.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AIxSuture:vision-based-assessment-of-open-suturing-skills"
-            }
-          },
-          {
-            "id": "8d9c62cdf30a8e68",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "raw/Automated-measurement-extraction-for-assessing-simple-suture-quality-in-medical-education.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Automated-measurement-extraction-for-assessing-simple-suture-quality-in-medical-education"
+              "title": "AIxSuture-vision-based-assessment-of-open-suturing-skills"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -93,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "507bb58ecd2fa4f9",
@@ -110,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "raw/Automated-measurement-extraction-for-assessing-simple-suture-quality-in-medical-education.md",
+                "file": "raw/AIxSuture-vision-based-assessment-of-open-suturing-skills.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Automated-measurement-extraction-for-assessing-simple-suture-quality-in-medical-educationへのバックリンク"
+              "title": "AIxSuture-vision-based-assessment-of-open-suturing-skillsへのバックリンク"
             }
           },
           {
@@ -197,17 +181,38 @@
       "bases:新規ベースを作成": false
     }
   },
-  "active": "8d9c62cdf30a8e68",
+  "active": "213cd4f2ad49233c",
   "lastOpenFiles": [
-    "pdf2md.sh",
-    "wiki/sources/AIxSuture.md",
     "raw/Automated-measurement-extraction-for-assessing-simple-suture-quality-in-medical-education.md",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills/e0de80091afa1b070f902c1cc7383778d1f3d5ac6f980edbb184c4d7f98bb36c.jpg",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills/c6ff248dc0022f824ed3f363dec878155f704b9bd86e78aaf71b9ae5d68a485d.jpg",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills/c60d1ef029fe50f769febf5699dd24104ebbf2c5cbdb9eea004d7330d958bcce.jpg",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills/b702a00b285c61a5cc4aab7d979174fa4247a536acb92284a1c28d9b887bdc3c.jpg",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills/aba9df19e37563521d0bed1b81a542c10dcba32a97c89a8f2817c3d98570bb6c.jpg",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills/9ac2a79b223b307c08901cf89230da091f639e30deef387408e7e1749137aa23.jpg",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills/771f20e7e9069d2ac89de615f64c280996df5e510b179998dcd2fb1199e4f710.jpg",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills/75a2c4d217a273be27c5fd602c341f67089d7da0c04cc868bd9d09fa0396d411.jpg",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills/7594ec31f717a642ec0a711d71e12ef2c8d291659b37e8e66c25e25bcd5be8b0.jpg",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills/5347f920c0cacd227bed447da36c5cc43cf1b3eecdf90d512ae63019c688b041.jpg",
+    "raw/assets/AIxSuture-vision-based-assessment-of-open-suturing-skills",
     "raw/AIxSuture:vision-based-assessment-of-open-suturing-skills.md",
+    "raw/AIxSuture-vision-based-assessment-of-open-suturing-skills.md",
+    "wiki/sources/Automated measurement extraction for suture quality.md",
+    "raw/assets/AIxSuture:vision-based-assessment-of-open-suturing-skills",
+    "raw/AIxSuture:vision-based-assessment-of-open-suturing-skills.pdf",
+    "AIxSuture:vision-based-assessment-of-open-suturing-skills.pdf",
+    "raw/assets/Automated-measurement-extraction-for-assessing-simple-suture-quality-in-medical-education",
+    "raw/assets",
+    "Automated-measurement-extraction-for-assessing-simple-suture-quality-in-medical-education.md",
+    "assets/Automated-measurement-extraction-for-assessing-simple-suture-quality-in-medical-education",
+    "assets",
     "wiki/index.md",
+    "wiki/sources/AIxSuture.md",
+    "Automated-measurement-extraction-for-assessing-simple-suture-quality-in-medical-education.pdf",
+    "Automated-measurement-extraction-for-assessing-simple-suture-quality-in-medical-education.html",
     "wiki/entities/AIxSuture データセット.md",
     "無題のファイル.md",
     "wiki/log.md",
-    "wiki/sources/Automated measurement extraction for suture quality.md",
     "wiki/entities/Simple Suture Datasets.md",
     "wiki/concepts/線形割当問題.md",
     "wiki/entities/Detectron2.md",
