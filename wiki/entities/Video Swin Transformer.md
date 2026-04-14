@@ -2,7 +2,7 @@
 title: Video Swin Transformer
 type: entity
 created: 2026-04-11
-updated: 2026-04-11
+updated: 2026-04-13
 tags: [深層学習, Transformer, 動画認識, アーキテクチャ]
 sources: [AIxSuture:vision-based-assessment-of-open-suturing-skills.md]
 aliases: [Video Swin, Swin Transformer (Video)]
@@ -11,6 +11,23 @@ aliases: [Video Swin, Swin Transformer (Video)]
 # Video Swin Transformer
 
 Vision Transformer（ViT）を動画に拡張したモデル。Liu et al. (2021) によって提案された。Swin Transformerの局所シフトウィンドウ機構を空間ドメインから時空間ドメインに拡張し、動画中の時間的・空間的な長距離依存関係を効率的に捕捉する。
+
+## アーキテクチャ
+
+### [[concepts/Self-Attention]]との関係
+
+ViTは画像パッチ間のグローバルな[[concepts/Self-Attention]]で長距離依存関係を捕捉するが、計算量がO(N²)と大きい。Video Swinはこれを**局所ウィンドウ内のAttention**に制限し、ウィンドウ間の情報伝播を**シフト機構**で実現する。
+
+### シフトウィンドウ機構
+
+時空間パッチを固定サイズのウィンドウ（T'×H'×W'）に分割し、ウィンドウ内でSelf-Attentionを計算する:
+
+- **偶数層**: 固定位置のウィンドウ内でAttention
+- **奇数層**: ウィンドウを時間・空間方向に半分シフトしてAttention
+
+シフトにより、隣接ウィンドウ間の情報交換が可能になり、局所Attentionでもグローバルな情報を層を重ねるごとに伝播できる。計算量はO(N²)からO(N)に削減される。
+
+このシフトウィンドウはCNNの局所性バイアスとTransformerのグローバルAttentionの折衷案として機能し、小規模データセットでも効果的に学習できる要因となっている。
 
 ## バリエーション
 
@@ -34,4 +51,6 @@ Tinyが最良性能を達成。これはハードウェア制約によりSmall/B
 
 - [[entities/I3D]]
 - [[entities/Temporal Segment Network]]
+- [[concepts/Self-Attention]]
+- [[concepts/転移学習]]
 - [[sources/AIxSuture]]

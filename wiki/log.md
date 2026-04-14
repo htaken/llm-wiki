@@ -1,10 +1,25 @@
 ---
 title: Log
 type: log
-updated: 2026-04-11
+updated: 2026-04-13
 ---
 
 # 操作ログ
+
+## [2026-04-13] update | AIxSuture 手法詳細の充実
+
+AIxSutureの手法に関する深掘り（TSNの仕組み、I3D vs Video Swinの違い、転移学習、Self-Attention）を基にWikiを充実。
+
+作成したページ:
+- `wiki/concepts/Self-Attention.md` — Attention機構の概念ページ（Q/K/V、Multi-Head、Cross-Attention含む）
+- `wiki/concepts/転移学習.md` — 転移学習の概念ページ（Kinetics400→外科動画の文脈）
+
+更新したページ:
+- `wiki/entities/Temporal Segment Network.md` — 数値例、訓練/評価時の違い、コンセンサス層の詳細を追記
+- `wiki/entities/I3D.md` — Inflation概念、重み初期化、特性を追記
+- `wiki/entities/Video Swin Transformer.md` — シフトウィンドウ機構の詳細を追記
+- `wiki/concepts/外科技術自動評価.md` — CNN vs Transformerのトレードオフを追記
+- `wiki/index.md` — 新規ページを追加
 
 ## [2026-04-11] ingest | Automated measurement extraction for suture quality
 
