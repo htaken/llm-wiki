@@ -1,10 +1,28 @@
 ---
 title: Log
 type: log
-updated: 2026-04-13
+updated: 2026-05-11
 ---
 
 # 操作ログ
+
+## [2026-05-11] ingest | SQL基礎まとめ
+
+`raw/sql-basic.md` を取り込み。SQL初学者向けの基礎ノート（エイリアス、制約、削除コマンド、INDEX、VIEW、CTE、トランザクション、数値関数、ウィンドウ関数）を体系化。既存Wikiは外科AI領域のみだったため、SQL/RDBという新領域のページ群を新規作成した。
+
+作成したページ:
+- `wiki/sources/SQL基礎まとめ.md` — ソース要約（全9トピックの目次付き）
+- `wiki/concepts/SQL制約.md` — PRIMARY KEY / FOREIGN KEY / CHECK
+- `wiki/concepts/INDEX.md` — B+Tree、O(log n)、読み書きトレードオフ
+- `wiki/concepts/VIEW.md` — 保存SELECT、権限制御、CTEとの違い
+- `wiki/concepts/CTE.md` — WITH句、段階分割、VIEWとの違い
+- `wiki/concepts/トランザクション.md` — BEGIN/COMMIT/ROLLBACK、ACID特性
+- `wiki/concepts/ウィンドウ関数.md` — OVER句、PARTITION BY、ROW_NUMBER、RANK
+- `wiki/concepts/テーブルエイリアスとJOIN.md` — 別名記法、自己JOIN
+- `wiki/concepts/SQLテーブル削除コマンド.md` — DROP / TRUNCATE / DELETE 比較
+
+更新したページ:
+- `wiki/index.md` — SQL関連ページを一覧に追加
 
 ## [2026-04-13] update | AIxSuture 手法詳細の充実
 
