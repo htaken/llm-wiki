@@ -6,6 +6,24 @@ updated: 2026-05-11
 
 # 操作ログ
 
+## [2026-05-11] ingest | Pythonのプロジェクト管理ツール uv のv0.5.3までの便利な機能
+
+`raw/Pythonのプロジェクト管理ツール uv のv0.5.3までの便利な機能.md`（Zenn記事、Turing Motors、2024-12-09）を取り込み。uvの依存関係まわりの機能（非PyPI index指定、environment markers、optional-dependencies + conflicts、dependency-groups、build isolation制御）を整理。Python/パッケージ管理の新規ドメインを開設。
+
+作成したページ:
+- `wiki/sources/Pythonのプロジェクト管理ツール uv のv0.5.3までの便利な機能.md` — ソース要約
+- `wiki/entities/uv.md` — Astral製のPython管理ツール
+- `wiki/entities/PyTorch.md` — 非標準index・アクセラレータ別wheelの代表例
+- `wiki/entities/flash-attention.md` — build isolation無効化の代表例
+- `wiki/entities/PyPI.md` — デフォルトのPythonパッケージindex
+- `wiki/concepts/Environment Markers.md` — PEP 508のmarker式（sys_platform等）
+- `wiki/concepts/Optional Dependencies.md` — extras + conflicts宣言（v0.5.3）
+- `wiki/concepts/Dependency Groups.md` — 複数dev-dependencies（v0.4.27）
+- `wiki/concepts/Build Isolation.md` — PEP 517、no-build-isolation-package、dependency-metadata
+
+更新したページ:
+- `wiki/index.md` — uv関連の新規ページを追加
+
 ## [2026-05-11] ingest | SQL基礎まとめ
 
 `raw/sql-basic.md` を取り込み。SQL初学者向けの基礎ノート（エイリアス、制約、削除コマンド、INDEX、VIEW、CTE、トランザクション、数値関数、ウィンドウ関数）を体系化。既存Wikiは外科AI領域のみだったため、SQL/RDBという新領域のページ群を新規作成した。
