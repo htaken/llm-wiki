@@ -2,7 +2,7 @@
 title: "AIxSuture: Vision-Based Assessment of Open Suturing Skills"
 type: source
 created: 2026-04-11
-updated: 2026-04-11
+updated: 2026-05-18
 tags: [外科技術評価, 開放手術, 縫合, 深層学習, データセット, ベンチマーク]
 sources: [AIxSuture:vision-based-assessment-of-open-suturing-skills.md]
 ---
@@ -40,6 +40,43 @@ sources: [AIxSuture:vision-based-assessment-of-open-suturing-skills.md]
   - Intermediate: 16 ≤ GRS < 24
   - Proficient: GRS ≥ 24
 - データ分割: 70%訓練 / 15%検証 / 15%テスト（同一学生の訓練前後動画は同じ分割内に配置）
+
+### 取得される動画情報の詳細
+
+#### 撮影セットアップ
+- **モダリティ**: RGB動画のみ（音声・深度・センサーデータなし）
+- **撮影機材**: GoPro Hero 5
+- **視点**: 鳥瞰視点（bird's-eye-view）固定、カメラ移動なし
+- **環境**: 標準化されたシミュレーション環境（実患者ではなく模型上での縫合）
+- **撮影場所**: University Hospital RWTH Aachen
+- **被写体**: 医学生・歯学生（手指と縫合器具・縫合対象が映る）
+
+#### 動画あたりの仕様
+- 長さ: 約5分
+- フレームレート: 30 fps
+- 本数: 314本
+- 総容量: 約100 GB
+
+#### 動画に紐づくメタデータ（Excelスプレッドシートで管理）
+- 学生ID・動画ID
+- 訓練前後フラグ（同一学生のpre/post 2本がペアで存在）
+- OSATS 8カテゴリのスコア（3評価者分）
+- GRS（OSATSカテゴリの合計、8〜40）
+
+#### 意図的に取得「していない」情報
+本研究は "video-only, end-to-end" を設計上の主張としており、以下は**含まれない**:
+- 器具トラッキング・ハンドキーポイント
+- 力・トルク・触覚センサー
+- ロボットキネマティクス
+- アイトラッキング
+- フェーズラベルや動作セグメンテーション等の時間アノテーション
+
+→ [[concepts/外科技術自動評価]]における motion-based 手法との明確な対比点。追加ハードウェア不要であることが臨床導入の容易さにつながると主張されている。
+
+#### モデル入力時の前処理
+- 30 fps → **5 fps にダウンサンプル**してフレーム抽出
+- 解像度を **270×480 ピクセル**にリサイズ
+- [[entities/Temporal Segment Network]]によりセグメント/スニペットに分割して入力
 
 ### 手法
 
