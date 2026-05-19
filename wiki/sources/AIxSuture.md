@@ -53,7 +53,9 @@ sources: [AIxSuture:vision-based-assessment-of-open-suturing-skills.md]
 
 #### 動画あたりの仕様
 - 長さ: 約5分
-- フレームレート: 30 fps
+- フレームレート: 30 fps（論文表記。実ファイルは 29.97 fps = 30000/1001 の NTSC レート）
+- 解像度: **1920×1080 (Full HD)**（論文には未記載。Zenodo 配布ファイルを `ffprobe` で確認）
+- コーデック: H.264
 - 本数: 314本
 - 総容量: 約100 GB
 
@@ -75,7 +77,7 @@ sources: [AIxSuture:vision-based-assessment-of-open-suturing-skills.md]
 
 #### モデル入力時の前処理
 - 30 fps → **5 fps にダウンサンプル**してフレーム抽出
-- 解像度を **270×480 ピクセル**にリサイズ
+- 解像度を **1920×1080 → 270×480 ピクセル**にリサイズ（約 1/7 のダウンサンプル、アスペクト比 16:9 は保持）
 - [[entities/Temporal Segment Network]]によりセグメント/スニペットに分割して入力
 
 ### 手法
@@ -88,12 +90,12 @@ sources: [AIxSuture:vision-based-assessment-of-open-suturing-skills.md]
 
 ### 結果
 
-| モデル | テストF1 | テスト精度 |
-|--------|----------|-----------|
-| I3D (64snippets, 12seg) | 0.692 ± 0.029 | 0.746 ± 0.063 |
+| モデル                                 | テストF1         | テスト精度         |
+| ----------------------------------- | ------------- | ------------- |
+| I3D (64snippets, 12seg)             | 0.692 ± 0.029 | 0.746 ± 0.063 |
 | Video Swin Tiny (64snippets, 12seg) | 0.716 ± 0.043 | 0.732 ± 0.033 |
-| Video Swin Small (best) | 0.631 ± 0.059 | 0.659 ± 0.066 |
-| Video Swin Big (best) | 0.636 ± 0.032 | 0.652 ± 0.038 |
+| Video Swin Small (best)             | 0.631 ± 0.059 | 0.659 ± 0.066 |
+| Video Swin Big (best)               | 0.636 ± 0.032 | 0.652 ± 0.038 |
 
 - NoviceとProficientクラスは分類が容易、Intermediateクラスが最も困難（全モデル・全評価者共通）
 - 短いスニペット長の方が動作の詳細を捉え、性能が向上する傾向
