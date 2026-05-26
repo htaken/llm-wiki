@@ -6,6 +6,14 @@ updated: 2026-05-26
 
 # 操作ログ
 
+## [2026-05-26] update | AIxSuture 配布先・ファイル構成
+
+クエリ「追加されたファイルの特定」を受け、Zenodo（records/7940583）とSynapse公開REST APIを調査。`wiki/entities/AIxSuture データセット.md` に「配布先・ファイル構成」節を追記。Zenodoの確定ファイル一覧（OSATS.xlsx・Packages01-11・LICENCE・README、計102.1GB、CC BY-NC-ND 4.0）と、Synapse構造（プロジェクト syn54123724、論文記載の syn58905622 は実は「Train」フォルダ、Data/Results wiki、評価者A/B/C・A/D/Eの痕跡、Test非公開）を記録。個別ファイル名はAPI認証・署名ゲートのため未確認である旨も明記。
+
+## [2026-05-26] update | OSS Challenge データアクセス方式
+
+クエリへの回答を受け、`wiki/sources/OSS Challenge.md` のチャレンジ設計に「データアクセスと評価方式」節を追記。規約署名は訓練データ取得に紐づき、テストデータは署名しても配布されず主催側マシンでクローズド評価される点を原文引用付きで明記。
+
 ## [2026-05-26] update | OSS Challenge チーム別成否分析
 
 クエリ「各チームのうまくいった点・うまくいかなかった点」への回答を、`wiki/sources/OSS Challenge.md` に「チーム別 成否分析」セクションとして追記（主要結果と考察の間）。論文Discussionに基づき全チーム（ベースライン含む）を ✅/❌ で整理し、全体を貫く4つの教訓を付記。

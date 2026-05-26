@@ -37,6 +37,15 @@ aliases: [OSS Challenge, Open Suturing Skills Challenge, OSS 2024-2025]
 - **提出形式**: 完全自動・Dockerコンテナ化。評価環境は最大4×NVIDIA RTX A5000（提出は単一GPUに制限）
 - ホスティングは Synapse。主催機関メンバーも参加可だが受賞対象外
 
+### データアクセスと評価方式
+
+署名が紐づくのは**訓練データの取得**であって、テストデータは署名しても参加者には配布されない。
+
+- **Train データ**（Synapse syn58905622 で配布される公開分）: 参加者がアクセスするには**チャレンジ規約への署名が必須**（accountability確保のため）。署名 → 訓練データのダウンロード可
+- **Test データ**: 非公開。**主催チームのみが need-to-know でアクセス**。参加者は完全自動・コンテナ化した解を提出し、**主催側のマシンがテストデータ上で実行して採点**するクローズド評価。署名してもテストデータ自体は入手できない
+
+> 原文（Section 2.1）: "participants were required to sign the challenge rules before gaining access to the data" / "Access to the test data was restricted to organizing team members on a need-to-know basis"
+
 ### 評価指標
 
 - **Task 1, 2**: マクロ平均F1（精度・再現率を統合）と **期待コスト EC（Expected Cost）**。ECはクラスの順序性（beginner≪…≪expert）を反映し、線形重み $w_{ij}=|i-j|/(C-1)$ で平均絶対誤差的に振る舞う。最終ランクはF1ランクとECランクの平均（同点はEC優先）
