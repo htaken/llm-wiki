@@ -113,6 +113,8 @@ sources: [AIxSuture:vision-based-assessment-of-open-suturing-skills.md]
 
 同じグループ（NCT Dresden / RWTH Aachen）が本データセットを拡張し、MICCAI 2024/2025のチャレンジ[[sources/OSS Challenge]]を開催した。expertデータの追加収録、4クラス分類（expert新設）、キーポイントトラッキングタスクの導入など。
 
+別グループ（UCLA, Alipour et al. 2026, [[sources/開放手術スキルの時空間特徴ML評価]]）は本データセットの3クラス設定をそのまま用い、本論文が報告した[[entities/I3D]]・[[entities/Video Swin Transformer]]のF1スコアを**比較ベースライン**として引用した上で、[[entities/CNN-LSTMハイブリッドモデル]]（fine-tuned [[entities/ResNet50]] + 双方向[[concepts/LSTM]] + アテンション）でマクロF1 0.82を達成し全スキルレベルで上回ったと主張している。ただし本論文の数値は「最適化を意図的に行わないベースライン」として提示されたものである点に留意。
+
 ## 関連する概念・エンティティ
 
 - [[concepts/外科技術自動評価]]
@@ -122,3 +124,4 @@ sources: [AIxSuture:vision-based-assessment-of-open-suturing-skills.md]
 - [[entities/I3D]]
 - [[entities/Video Swin Transformer]]
 - [[sources/OSS Challenge]]
+- [[sources/開放手術スキルの時空間特徴ML評価]]

@@ -17,6 +17,8 @@ updated: 2026-05-26
 - [[sources/MediaPipe ソリューション ガイド]] — GoogleのオンデバイスML スイートMediaPipe Solutionsの公式概要（ソリューション一覧・対応表・レガシー移行）
 - [[sources/SAPIENS2]] — 人物中心視覚の高解像度Transformer基盤モデル（0.4B〜5B、MAE+CLハイブリッド事前学習、1K/4K、Meta、arXiv 2604.21681v1）
 - [[sources/SAM 3]] — コンセプトプロンプト（名詞句・画像exemplar）で全インスタンスを検出・セグメント・追跡する統合モデル。PCSタスク＋SA-Coデータエンジン（Meta Superintelligence Labs）
+- [[sources/開放手術スキルの時空間特徴ML評価]] — AIxSutureデータセットにCNN-LSTMハイブリッド（fine-tuned ResNet50 + BiLSTM + アテンション）を適用し、マクロF1 0.82でI3D/Swinベンチマークを上回る（UCLA, Alipour et al. 2026）
+- [[sources/縫合品質分類における転移学習の有効性評価]] — 縫合結果画像から品質を2値分類。8つのImageNet事前学習CNNを5-fold CV比較、安定性考慮スコア+GradCAM。F1>0.90（IOVS/ILS）（Ishchenko et al., J. Imaging 2025）
 
 ## エンティティ
 - [[entities/AIxSuture データセット]] — 314本の開放手術縫合訓練動画データセット（OSATS評価付き）
@@ -48,12 +50,15 @@ updated: 2026-05-26
 - [[entities/SAM 2]] — 点/ボックス/マスクで1物体を画像・動画でセグメントするSAM 3の前身（PVS、Meta）
 - [[entities/X3D]] — 2D CNNを多軸で段階拡張した効率的3D CNN。OSSチャレンジのベースライン（X3D-M）
 - [[entities/Surgformer]] — TimeSFormer拡張の外科動画Transformer（HTA+ASA）。OSS 2024 Syangcwが採用
+- [[entities/ResNet50]] — 残差学習の50層2D CNN。空間特徴抽出器の定番。Alipour et al.でAIxSutureにfine-tuning
+- [[entities/CNN-LSTMハイブリッドモデル]] — ResNet50 + 双方向LSTM + アテンションで空間と時間を分離する開放手術スキル分類モデル（マクロF1 0.82）
 
 ## コンセプト
 - [[concepts/インスタンスセグメンテーション]] — 画像中の各オブジェクトを個別にセグメンテーションするタスク
 - [[concepts/Self-Attention]] — Transformer の中核機構。系列内の全要素間の関連度を動的に計算して情報を集約する
 - [[concepts/外科技術自動評価]] — 機械学習による外科手術スキルの客観的・自動的評価
 - [[concepts/転移学習]] — ソースドメインで学習した特徴表現をターゲットドメインに再利用する手法
+- [[concepts/GradCAM]] — 学習済みCNNに事後付与する勾配ベースの解釈性手法。判断根拠の画像領域をヒートマップで可視化
 - [[concepts/線形割当問題]] — コスト最小の一対一マッチングを求める最適化問題
 - [[concepts/SQL制約]] — PRIMARY KEY / FOREIGN KEY / CHECK によるDBレイヤでのデータ整合性保証
 - [[concepts/INDEX]] — B+Tree等を用いた検索高速化機構と書き込みコストのトレードオフ
@@ -76,3 +81,5 @@ updated: 2026-05-26
 - [[concepts/Promptable Concept Segmentation]] — 名詞句・画像exemplarで全インスタンスを検出・セグメント・追跡するタスク（PCS、SAM 3）。PVSとの対比
 - [[concepts/データエンジン]] — モデル・人間・AIアノテーターのループで注釈データを反復生成する仕組み（AI verifierでスループット2倍）
 - [[concepts/HOTA]] — 検出・局所化・関連付けを統合するMOT評価指標。OSSチャレンジTask 3でユークリッド距離版を採用
+- [[concepts/LSTM]] — ゲート機構で長距離時間依存を学習するRNN。双方向LSTMで前後文脈を統合（外科動画の時間モデル化）
+- [[concepts/時間アテンションプーリング]] — 系列を重要度重み付き加重和で1ベクトルに集約する軽量ソフトアテンション。解釈性も提供

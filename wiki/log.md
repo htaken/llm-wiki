@@ -6,6 +6,45 @@ updated: 2026-05-26
 
 # 操作ログ
 
+## [2026-05-26] ingest | 縫合品質分類における転移学習の有効性評価（Ishchenko et al. 2025）
+
+`raw/jimaging-11-00266.md`（Ishchenko et al., V.K. Gusak Institute / Lomonosov MSU, *J. Imaging* 2025, 11, 266）を取り込み。**縫合結果の静止画像**から品質を**2値分類**する画像（成果）ベースの手法で、8つのImageNet事前学習CNN（ResNet50V2・DenseNet121・Xception・EfficientNetB0・MobileNetV3Large・VGG16/19・InceptionV3）を5-fold交差検証で系統比較。F1の群間差は全タスク非有意のため、安定性を考慮した独自スコア Score_adj で順位付け。IOVS/ILSはF1>0.90、最難のCOOSは0.79（ImageNetからのドメインシフト）。[[concepts/GradCAM]]でステッチ・結び目・組織縁への注目を確認。[[sources/Automated measurement extraction for suture quality]]（計測値抽出）と同じ画像ベースだがエンドツーエンド分類である点が対照的。
+
+作成したページ:
+- `wiki/sources/縫合品質分類における転移学習の有効性評価.md` — ソース要約（データセット・2段階fine-tuning・Score_adj・4タスク結果表・COOSドメインシフト・限界）
+- `wiki/concepts/GradCAM.md` — 勾配ベースの事後解釈性手法。アテンションベース解釈性との対比
+
+更新したページ:
+- `wiki/concepts/外科技術自動評価.md` — アプローチ分類に「画像（成果）ベース」を追加、Ishchenko et al.の2値分類アプローチ節を追記
+- `wiki/concepts/転移学習.md` — 8アーキ系統比較とCOOSのドメインシフト節を追記
+- `wiki/entities/ResNet50.md` — ResNet50V2の画像2値分類での最有力性能（IOVS内面AUC-ROC 0.959等）を追記
+- `wiki/index.md` — 新規ソース・GradCAMコンセプトを一覧に追加
+
+## [2026-05-26] ingest | 開放手術スキルの時空間特徴ML評価（Alipour et al. 2026）
+
+`raw/1-s2.0-S0039606025009316-main.md`（Alipour et al., UCLA CORELAB, *Surgery* 2026）を取り込み。[[entities/AIxSuture データセット]]に**CNN-LSTMハイブリッド**（fine-tuned [[entities/ResNet50]] + 双方向[[concepts/LSTM]] + ソフトアテンション）を適用し、3クラス分類でマクロF1 0.82を達成。比較対象のI3D・Swin各種の数値は[[sources/AIxSuture]]原論文の報告値そのものであり、AIxSuture公開ベンチマークに対する改善主張である点を明記。ユーザー選択により最大粒度（モデル本体・時間アテンションを独立ページ化）で取り込んだ。
+
+作成したページ:
+- `wiki/sources/開放手術スキルの時空間特徴ML評価.md` — ソース要約（手法2系統=ResNet50 fine-tuning/CNN-LSTM分類、結果、比較表、アテンション解析、限界、データ不整合）
+- `wiki/entities/ResNet50.md` — 残差学習50層CNN、空間特徴抽出器、2フェーズfine-tuning、I3D/Swinとの対比
+- `wiki/entities/CNN-LSTMハイブリッドモデル.md` — モデル本体（パイプライン図解、構成要素、訓練、性能、長短）
+- `wiki/concepts/LSTM.md` — ゲート機構、CNN/Self-Attentionとの対比、BiLSTM、本研究での3採用理由
+- `wiki/concepts/時間アテンションプーリング.md` — 単一ヘッドソフトアテンションによる系列集約、Self-Attentionとの違い、解釈性
+
+更新したページ:
+- `wiki/concepts/外科技術自動評価.md` — CNN-LSTMハイブリッドアプローチ節（3アーキ系統の対比表、チューニング差の留保、OSS教訓との整合）を追記
+- `wiki/entities/AIxSuture データセット.md` — Alipour et al.の結果（n=119/79/116、マクロF1 0.82、前処理差）をベンチマーク節に追記
+- `wiki/entities/I3D.md` / `wiki/entities/Video Swin Transformer.md` — 比較ベースラインとしての利用節を追記
+- `wiki/concepts/Self-Attention.md` — 軽量な親戚としての時間アテンションプーリングを追記、関連リンク追加
+- `wiki/concepts/転移学習.md` — ImageNet→外科フレームのResNet50転移、2フェーズ戦略を追記
+- `wiki/sources/AIxSuture.md` — 別グループの後続利用としてリンク
+- `wiki/index.md` — ソース1・エンティティ2・コンセプト2を追加
+
+検出した不整合（各ページに併記）:
+- abstractのマクロF1 80.1% vs 表の82.04%（5-fold平均 vs 結合モデルの可能性）
+- abstractのクラス別「accuracy」（90.1/65.7/86.3%）vs 表のクラス別F1（91.26/62.86/92.00%）は別指標
+- 利益相反欄「P.D.」が著者リストに該当者なし（表記揺れと推定）
+
 ## [2026-05-26] update | OSS Challenge コード公開状況
 
 クエリ「元となるtrain.pyなどのスクリプトはあったか」を受け、GitLab API（nct_tso_public/aixsuture）でリポジトリ構成を調査。`wiki/sources/OSS Challenge.md` に「コード公開状況」節を追記。ベースラインの祖先である AIxSuture リポジトリの全スクリプト（train.py/test.py/preprocessing.py/models.py=I3D・Video Swin 等）、ただし公開バックボーンはI3D/Video SwinでありOSSベースラインのX3D-Mそのものではない点、チャレンジ側の評価スクリプト・改変HOTA・各チームコードの公開を記録。
