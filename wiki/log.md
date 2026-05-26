@@ -6,6 +6,10 @@ updated: 2026-05-26
 
 # 操作ログ
 
+## [2026-05-26] update | OSS Challenge コード公開状況
+
+クエリ「元となるtrain.pyなどのスクリプトはあったか」を受け、GitLab API（nct_tso_public/aixsuture）でリポジトリ構成を調査。`wiki/sources/OSS Challenge.md` に「コード公開状況」節を追記。ベースラインの祖先である AIxSuture リポジトリの全スクリプト（train.py/test.py/preprocessing.py/models.py=I3D・Video Swin 等）、ただし公開バックボーンはI3D/Video SwinでありOSSベースラインのX3D-Mそのものではない点、チャレンジ側の評価スクリプト・改変HOTA・各チームコードの公開を記録。
+
 ## [2026-05-26] update | AIxSuture 配布先・ファイル構成
 
 クエリ「追加されたファイルの特定」を受け、Zenodo（records/7940583）とSynapse公開REST APIを調査。`wiki/entities/AIxSuture データセット.md` に「配布先・ファイル構成」節を追記。Zenodoの確定ファイル一覧（OSATS.xlsx・Packages01-11・LICENCE・README、計102.1GB、CC BY-NC-ND 4.0）と、Synapse構造（プロジェクト syn54123724、論文記載の syn58905622 は実は「Train」フォルダ、Data/Results wiki、評価者A/B/C・A/D/Eの痕跡、Test非公開）を記録。個別ファイル名はAPI認証・署名ゲートのため未確認である旨も明記。

@@ -80,6 +80,36 @@ NCT提供。Funke et al. の確立手法に基づく:
 - Task 1は予測GRSをスコア範囲でハードコード分類。Task 2はカテゴリ毎に別アンサンブルを訓練
 - **2024・2025ともベースラインが全提出を上回り**、ロバスト性を示した
 
+## コード公開状況
+
+（2026-05-26時点、リポジトリ調査による）
+
+### ベースラインの元コード
+
+ベースラインは「確立手法[22, 28]に由来」とされ、[28]=[[sources/AIxSuture]]の公開リポジトリ **`gitlab.com/nct_tso_public/aixsuture`** に完全な学習・評価パイプラインが揃っている。
+
+| スクリプト | 役割 |
+|---|---|
+| `train.py` | train/val/test分割の振り分けとモデル学習 |
+| `test.py` / `test_args.py` | テストセット評価 |
+| `preprocessing.py` | 動画から指定fpsでフレーム抽出 |
+| `models.py` | アーキ定義（**Inception3D / SWINTransformer_T/S/B**） |
+| `pytorch_i3d.py` | I3D実装 |
+| `dataset.py` / `transforms.py` / `basic_ops.py` / `train_opts.py` / `util.py` | データ・前処理・オプション等 |
+
+依存: torch/torchvision/numpy/pillow/pyyaml/matplotlib/seaborn/pandas、Python 3.8 + CUDA 11.8で検証。実行例:
+```
+python3 preprocessing.py --data_root [VIDEO_DIR] --out_dir [FRAMES_DIR] --frame_rate 1
+python3 train.py --exp [NAME] --data_path [FRAMES_DIR] --out [OUTPUT_DIR] --arch [ARCH]
+```
+
+> **重要な差異**: この公開コードのバックボーンは [[entities/I3D]]（Inception3D）と [[entities/Video Swin Transformer]]（＝AIxSuture論文の構成）であり、**OSSベースラインが実際に使った [[entities/X3D]]-M そのものではない**。「ベースラインの直接の祖先となる学習コード」が公開されている、という位置づけ。
+
+### チャレンジ側の公開コード（論文 Code Availability）
+
+- **評価スクリプト**と、キーポイント用に改変した **[[concepts/HOTA]] メトリック**を公開・参加者へ提供（HOTAの基盤は Luiten et al. の TrackEval 系）
+- 各参加チームのコードも論文公開時にリンク: SK 2025, Syangcw, Jmees 2024/2025, Algoritmi 2024/2025, Scalpel, Perk, MediSC_OyeSS 2025
+
 ## 参加チームと手法
 
 ### 2024（6チーム、4チームが公式期間＋Perk/Scalpelが事後提出）
