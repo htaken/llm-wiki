@@ -6,6 +6,32 @@ updated: 2026-05-26
 
 # 操作ログ
 
+## [2026-05-26] ingest | 先行研究調査 Tier 1 4本（Atazadah / Cui / Kiyasseh / Fischer）
+
+deep-research 報告（`~/Downloads/deep-research-report.md`）を踏まえ取得した Tier 1 4本を取り込み。ExpOS 後に残した4本柱（#3 product-bias 実証分解・#4 OSATS カテゴリ別分解・#2 product-only 上界への増分・公開再現）を各論文に照らし再評価。
+
+- **`raw/ivag048.md`（Atazadah et al. 2026, ICVTS）** — 鳥瞰 [[entities/MediaPipe]] palm 軌跡のキネマティクスが**経験年数予測で OSATS・手術時間を上回る**。**主張 #2 への最大の新脅威**だが、対象が経験年数（成果スコアでない）・baseline が時間/OSATS（product-only 画像でない）・palm のみ（微細運動を捨てる）・非公開、の4差で #2 は narrow に生存。palm の限界記述が 3D 関節化の動機に。
+- **`raw/s41746-024-01143-3.md`（Cui et al. 2024, npj Digital Medicine）** — 縫合を6 [[entities/EASE]] サブスキルに分解し GAT で関係をモデル化。**主張 #4 の最近接**だが process のサブスキル分解で product を分けず（EASE は product ノードを持たない）・VR ロボット。#4 は clean に生存。
+- **`raw/s41746-023-00766-2.md`（Kiyasseh et al. 2023, npj Digital Medicine）** — SAIS の過小/過大評価バイアス（人口統計サブコホート間 NPV/PPV 格差）を実証、TWIX で緩和。**主張 #3 防御に必読**: 人口統計バイアス≠product-bias で #3 生存、かつ交絡コントロール＋均衡再訓練のショートカット検証法を成果信号へ転用でき #3 を方法論ごと強化。
+- **`raw/2601.15918v1.md`（Fischer et al. 2026, IJCARS）** — training-free top-down マルチビュー3D手姿勢＋68k フレーム公開ベンチマーク。単眼の OOD 脆弱性を指摘しマルチビューを推奨（難所トライアド=照明/オクルージョン/手袋を整理）。feasibility は有利な部分集合（鳥瞰・単一術者）で成立、「公開ベンチマーク構築」柱に追い風。
+
+**重心の移動**: publishable core を Stage 0（#3+#4、公開データ・手姿勢非依存）に置く／process チャンネル（3D手）は貢献でなく道具／完了時間を product-vs-process の主問いに据える。
+
+作成したページ:
+- `wiki/sources/AI手追跡による心臓胸部外科スキルの客観的評価.md`（Atazadah 2026）
+- `wiki/sources/縫合サブスキル間の関係性を捉えた自動評価.md`（Cui 2024）
+- `wiki/sources/人間の視覚的説明によるAIスキル評価のバイアス緩和.md`（Kiyasseh 2023）
+- `wiki/sources/外科3D手姿勢推定のマルチビューパイプラインとベンチマーク.md`（Fischer 2026）
+- `wiki/entities/EASE.md` — 縫合サブスキル尺度（OSATS との対比＝#4 の根拠）
+- `wiki/concepts/アルゴリズムバイアス.md` — 過小/過大評価バイアスと product-bias の区別、ショートカット検証法
+
+更新したページ:
+- `wiki/concepts/プロセス vs 成果の信号分解.md` — 「Tier 1 先行研究4本による4本柱の再評価」節を追加（#3 強化・#4 clean 生存・#2 最も危険・公開ベンチマーク追い風・feasibility 更新・重心移動）、sources 4本追加、関連ページ更新
+- `wiki/concepts/3D手姿勢推定.md` — 「外科ドメインの feasibility と単眼 vs マルチビュー」節（Fischer の難所トライアド・top-down レシピ・全身モデルの弱さ・biomech 逆効果、Atazadah palm の限界）を追加
+- `wiki/index.md` — ソース4・エンティティ1（EASE）・コンセプト1（アルゴリズムバイアス）を追加
+
+未反映（ユーザー確認待ち）: `research-plan/` の README・01 への重心移動の反映。
+
 ## [2026-05-26] ingest | Using Hand Pose Estimation To Automate Open Surgery Training Feedback
 
 `raw/2211.07021v2.md`（Bkheet, D'Angelo, Goldbraikh, Laufer / Technion・Mayo Clinic, arXiv 2211.07021）を取り込み。**[[sources/ExpOS]] の2D手姿勢版の直接の前身**（同 Laufer 研、Goldbraikh は [[entities/Open Surgery Simulation データセット]] の著者でもある）。[[entities/YOLO|YOLO-X]] で手・器具を検出 → Simple Baseline で2D姿勢推定 → [[entities/MS-TCN++]] でジェスチャー/ツールをマルチタスク同時セグメンテーション（[[entities/I3D]] 多視点融合で **88.35% SOTA**、kinematic センサ 82.40% を凌駕）。さらにドメインエキスパートの助言を operationalize した **6つの[[concepts/外科スキルプロキシ]]**（手の回内/回外・親指-人差し指距離・指-組織距離・手速度・ジェスチャー所要時間）で novice vs expert を有意弁別し、**per-gesture の actionable feedback** を自動生成。

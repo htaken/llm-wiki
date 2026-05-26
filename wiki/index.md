@@ -22,6 +22,10 @@ updated: 2026-05-26
 - [[sources/ExpOS]] — WiLoR 3D手再構成＋MS-TCN++＋多頭アテンション＋SHAPで開放手術スキルを解釈可能に回帰評価。r=0.778（筋膜閉鎖）。研究計画の「未採掘の継ぎ目」を占有した最重要先行研究（Papo et al. Technion, arXiv 2605.23653）
 - [[sources/開放手術縫合スキルの画像ベース計測]] — シミュレータ膜下カメラの針運動から手作り幾何指標を抽出する純・processアプローチ。新規4指標で研修医 vs 指導医を弁別。「follow the curvature of the needle」をoperationalize（Kil et al. Clemson, J Surg Ed 2024）
 - [[sources/手姿勢推定による開放手術トレーニングフィードバックの自動化]] — 2D手姿勢＋スキルプロキシで開放手術技量を評価。ジェスチャーセグメンテーションSOTA 88.35%、per-gestureのactionable feedback。ExpOSの2D前身（Bkheet et al. Technion/Laufer研, arXiv 2211.07021）
+- [[sources/AI手追跡による心臓胸部外科スキルの客観的評価]] — 鳥瞰MediaPipe palm軌跡のキネマティクス（velocity/pathlength/jerk）が経験年数予測でOSATS・手術時間を上回る。主張#2への最大の新脅威だが経験年数対象・非公開・palmのみ（Atazadah et al. Leiden/Amsterdam, ICVTS 2026, ivag048）
+- [[sources/縫合サブスキル間の関係性を捉えた自動評価]] — 縫合を6 EASE サブスキルに分解しGATで関係をモデル化、video+kinematics融合で同時評価。主張#4の最近接だがprocessのサブスキル分解でproductは分けず・VRロボット（Cui et al. USC, npj Digital Medicine 2024）
+- [[sources/人間の視覚的説明によるAIスキル評価のバイアス緩和]] — SAISの過小/過大評価バイアス（人口統計サブコホート間NPV/PPV格差）を実証しTWIXで緩和。主張#3防御に必読（人口統計バイアス≠product-bias）＋ショートカット検証法（Kiyasseh et al. Caltech/USC, npj Digital Medicine 2023）
+- [[sources/外科3D手姿勢推定のマルチビューパイプラインとベンチマーク]] — training-freeなtop-downマルチビュー3D手姿勢パイプライン＋68k フレーム外科ベンチマーク。単眼の難所トライアドを整理しマルチビューを推奨。feasibilityと公開ベンチマーク柱（Fischer et al. Balgrist/UZH/ETH, IJCARS 2026, arXiv 2601.15918）
 
 ## エンティティ
 - [[entities/AIxSuture データセット]] — 314本の開放手術縫合訓練動画データセット（OSATS評価付き）
@@ -59,6 +63,7 @@ updated: 2026-05-26
 - [[entities/RoHans]] — 手術室向けの頑健な手検出。YOLO検出器をpseudo-label自己訓練でrefine。ExpOSでWiLoRの前段（Papo et al. 2025、同Laufer研）
 - [[entities/YOLO]] — one-stageリアルタイム物体検出。外科映像の器具・手検出のワークホース（Ultralytics）
 - [[entities/Open Surgery Simulation データセット]] — Goldbraikh et al.の開放手術シミュレーション動画＋kinematicデータ（100動画/25臨床医）。Bkheet et al.が2D手姿勢を追加注釈。OSS Challengeとは別物
+- [[entities/EASE]] — 縫合をneedle handling/driving/withdrawalの6サブスキルに分解する評価尺度。全項目がprocess側でproductノードを持たない（OSATSとの決定的差）
 
 ## コンセプト
 - [[concepts/インスタンスセグメンテーション]] — 画像中の各オブジェクトを個別にセグメンテーションするタスク
@@ -95,3 +100,4 @@ updated: 2026-05-26
 - [[concepts/順序回帰]] — 順序ラベル（スキルレベル）の学習。SORD損失で近いクラスへの誤りを軽く罰する（ExpOS採用）
 - [[concepts/針運動ベースのプロセス計測]] — 縫合中の針運動から計算する解釈可能な幾何指標（Tip Path Length/Tip Area/Swept Area/Sway Length）。「follow the curvature of the needle」を定量化した純・process信号
 - [[concepts/外科スキルプロキシ]] — 動画の器具＋手姿勢から計算でき実行者に説明できる解釈可能なmetric。Bkheetの6プロキシ（手の回内/指距離/手-組織距離/手速度等）でnovice vs expertを弁別しactionable feedback。ExpOSの学習ベース後継へ
+- [[concepts/アルゴリズムバイアス]] — AI外科スキル評価の過小/過大評価バイアス（人口統計サブコホート間NPV/PPV格差）。product-biasとの区別とショートカット検証法（Kiyasseh 2023）
