@@ -13,6 +13,8 @@ updated: 2026-05-26
 - [[sources/Pythonのプロジェクト管理ツール uv のv0.5.3までの便利な機能]] — uv v0.5.3までの依存関係まわりの便利機能（index指定、environment markers、optional-deps、dependency-groups、build isolation）
 - [[sources/AnyHand]] — RGB(-D) 3D手姿勢推定のための大規模合成データセット。共訓練でHaMeR/WiLoRをSOTAに（UCSD他、arXiv 2603.25726v2）
 - [[sources/WiLoR]] — 手検出と3D再構成を統合したフルスタック手法の原論文。WHIMデータセット＋multi-scale refinement（Imperial/SJTU、CVPR25、arXiv 2409.12259v2）
+- [[sources/MediaPipe ソリューション ガイド]] — GoogleのオンデバイスML スイートMediaPipe Solutionsの公式概要（ソリューション一覧・対応表・レガシー移行）
+- [[sources/SAPIENS2]] — 人物中心視覚の高解像度Transformer基盤モデル（0.4B〜5B、MAE+CLハイブリッド事前学習、1K/4K、Meta、arXiv 2604.21681v1）
 
 ## エンティティ
 - [[entities/AIxSuture データセット]] — 314本の開放手術縫合訓練動画データセット（OSATS評価付き）
@@ -34,6 +36,9 @@ updated: 2026-05-26
 - [[entities/AnyHandNet-D]] — WiLoRに深度融合モジュールを足したRGB-Dモデル
 - [[entities/MANO]] — 手のパラメトリックモデル（形状β+ポーズ）。手姿勢推定の標準表現
 - [[entities/SAPIEN]] — AnyHandのレンダリング基盤となるシミュレーション環境（レイトレーシング）
+- [[entities/MediaPipe]] — Google製のオンデバイスAI/MLソリューションスイート（Tasks/Model Maker/Studio、4プラットフォーム対応）
+- [[entities/Sapiens2]] — Meta製の人物中心視覚基盤モデルファミリー（0.4B〜5B、1K/4K、308点姿勢・29クラスseg・法線・pointmap・albedo）
+- [[entities/Humans-1B データセット]] — Sapiens2事前学習用の約10億枚高品質人物画像（4Bから多段フィルタでキュレーション）
 
 ## コンセプト
 - [[concepts/インスタンスセグメンテーション]] — 画像中の各オブジェクトを個別にセグメンテーションするタスク
@@ -57,3 +62,5 @@ updated: 2026-05-26
 - [[concepts/手検出・ローカライゼーション]] — 画像中の手のbbox・左右を検出するタスク。FCN+PANet+anchor-freeでリアルタイム化
 - [[concepts/合成データとsim-to-realギャップ]] — 合成データによるスケーリングと実世界転移の課題
 - [[concepts/RGB-D深度融合]] — RGBと深度を双方向クロスアテンションで統合し深度方向の曖昧性を解消
+- [[concepts/自己教師あり学習]] — MIM（MAE）とCLの2系統、およびSapiens2のMAE+CLハイブリッド統一目的
+- [[concepts/人物中心視覚]] — 人間を対象とする視覚タスク群と基盤モデルのスケール3軸

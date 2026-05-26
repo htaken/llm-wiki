@@ -6,6 +6,38 @@ updated: 2026-05-26
 
 # 操作ログ
 
+## [2026-05-26] ingest | SAPIENS2: 人物中心視覚のための高解像度Transformerファミリー
+
+`raw/2604.21681v1.md`（Khirodkar et al., Meta Reality Labs）を取り込み。人物中心視覚の高解像度Transformer基盤モデル Sapiens2 の原論文。GitHub リポジトリ（facebookresearch/sapiens2）も WebFetch で調査し、論文未記載の補足（追加の0.1Bモデル、human mattingタスク、Sapiens2ライセンス、Python≥3.12/PyTorch≥2.7・最小依存）を取得。人物中心視覚＝外科AI／手姿勢推定とは別の新領域だが、308点姿勢に手40点を含む点・Self-Attention（GQA/windowed/QK-Norm）で既存ページと接続した。
+
+作成したページ:
+- `wiki/sources/SAPIENS2.md` — ソース要約（3軸の貢献、Humans-1B、MAE+CL目的、アーキ、5タスク後段学習、全結果表、リポジトリ補足）
+- `wiki/entities/Sapiens2.md` — モデルファミリー本体（4サイズ＋0.1B/4K、アーキ特徴、対応タスク、ライセンス、比較）
+- `wiki/entities/Humans-1B データセット.md` — 約10億枚の人物画像コーパス（4Bから多段フィルタ）
+- `wiki/concepts/自己教師あり学習.md` — MIM（MAE/BEiT）とCL（DINO系）の2系統、Sapiens2のハイブリッド統一目的、マスキング、4K階層型アテンション
+- `wiki/concepts/人物中心視覚.md` — 人間対象タスク群、prior-free vs 事前知識注入型、スケール3軸の比較表
+
+更新したページ:
+- `wiki/concepts/Self-Attention.md` — 高解像度向け階層型アテンション、GQA/QK-Normの効率・安定化変種を追記、関連リンク追加
+- `wiki/concepts/3D手姿勢推定.md` — 全身308点（手40点）を扱うSapiens2との関係を追記、関連リンク追加
+- `wiki/index.md` — ソース1・エンティティ2・コンセプト2を追加
+
+検出した矛盾（要確認）:
+- 論文§5の5タスクは pose/seg/pointmap/normal/**albedo** だが、GitHubリポジトリのタスク一覧は pose/seg/normal/pointmap/**matting**。matting は論文未記載、albedo はリポジトリ概要のタスク一覧に未掲載。各ページに併記。
+
+## [2026-05-26] ingest | MediaPipe ソリューション ガイド | Google AI Edge
+
+`raw/MediaPipe ソリューション ガイド    Google AI Edge.md`（Google AI Edge 公式ドキュメント）を取り込み。MediaPipe Solutions スイートの概要カタログページ。元クリッピングではプラットフォーム対応表のチェックマークが欠落していたため、live ページ（ai.google.dev）を WebFetch で参照し対応表を復元。既存 Wiki の手姿勢推定領域で MediaPipe が「軽量な既存手検出ベースライン」として無リンク参照されていたため、エンティティ化して接続した。
+
+作成したページ:
+- `wiki/sources/MediaPipe ソリューション ガイド.md` — ソース要約（構成要素、全16ソリューションのプラットフォーム対応表、レガシー移行表）
+- `wiki/entities/MediaPipe.md` — Google製オンデバイスMLスイート（Tasks/Model Maker/Studio、沿革、WiLoR比較での位置づけ）
+
+更新したページ:
+- `wiki/concepts/手検出・ローカライゼーション.md` — 無リンクだった「MediaPipe」を [[entities/MediaPipe]] にリンク化、関連リンク追加
+- `wiki/sources/WiLoR.md` — 本文の MediaPipe 言及を [[entities/MediaPipe]] にリンク化
+- `wiki/index.md` — ソース1・エンティティ1を追加
+
 ## [2026-05-26] ingest | WiLoR: End-to-end 3D Hand Localization and Reconstruction in-the-wild
 
 `raw/2409.12259v2.md`（Potamias et al., Imperial College London / SJTU, CVPR 2025）を取り込み。手検出と3D手再構成を統合したフルスタック手法 WiLoR の原論文。既存の WiLoR/HaMeR/MANO/3D手姿勢推定 ページは AnyHand 論文経由の二次情報だったため、本ingestで一次ソースの詳細（検出パイプライン、WHIMデータセット、multi-scale refinement、4D結果）を肉付け。

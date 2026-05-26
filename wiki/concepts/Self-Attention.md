@@ -54,10 +54,20 @@ Transformerの典型的なEncoder-Decoder構造では:
 
 標準的なSelf-Attentionは全要素間で類似度を計算するため、計算量はO(N²)となる。動画のように系列長が大きい入力では計算が膨大になる。[[entities/Video Swin Transformer]]のシフトウィンドウ機構は、Attentionを局所ウィンドウ内に制限しつつウィンドウをシフトすることで、O(N)の計算量でグローバルな情報伝播を実現する効率化手法である。
 
+高解像度画像でも同様に系列長が問題になる。[[entities/Sapiens2]]（4K入力）は**階層型アテンション**を採る: 先頭層は windowed self-attention で局所構造を捉え、[CLS]-guided pooling で空間ストライド √ω だけトークンをダウンサンプルした後、後続層で global attention により大域文脈を融合する。これは MAE 系のスパース事前学習（[[concepts/自己教師あり学習]]）と両立する（局所段の後にマスクトークンを drop できる）。
+
+### スループット・安定化の変種
+
+大規模 ViT では Attention 自体の計算式は保ちつつ、効率・安定性のための変種が導入される。[[entities/Sapiens2]] は次を採用する:
+- **Grouped-Query Attention（GQA）**: 複数の Query ヘッドで Key/Value ヘッドを共有し、KV キャッシュとメモリ帯域を削減してスループットを上げる（MHA と MQA の中間）。
+- **QK-Norm**: Attention 計算前に Query と Key を正規化し、内積（`QK^T`）の値の暴走を抑えて高解像度・長スケジュール学習を安定化する。前述の `/√d_k` スケーリングと同じく logits の発散対策だが、学習可能な正規化で動的に効く。
+
 ## 関連ページ
 
 - [[entities/Video Swin Transformer]]
+- [[entities/Sapiens2]]
 - [[entities/I3D]]
+- [[concepts/自己教師あり学習]]
 - [[concepts/転移学習]]
 - [[concepts/外科技術自動評価]]
 - [[concepts/RGB-D深度融合]]
