@@ -6,6 +6,21 @@ updated: 2026-05-26
 
 # 操作ログ
 
+## [2026-05-26] query | 開放縫合スキル評価の手法的余地（壁打ち→研究方針）
+
+クエリ「OSS Challengeで多くの手法が試された中、新規に開拓する余地のある手法を壁打ちで考えたい」を受け、外科スキル評価5ソース（[[sources/AIxSuture]]・[[sources/OSS Challenge]]・[[sources/Automated measurement extraction for suture quality]]・[[sources/縫合品質分類における転移学習の有効性評価]]・[[sources/開放手術スキルの時空間特徴ML評価]]）と手姿勢/セグメンテーション系ツール群（[[entities/WiLoR]]・[[entities/HaMeR]]・[[sources/AnyHand]]・[[entities/SAM 3]]・[[entities/Sapiens2]]・[[entities/MediaPipe]]）を横断的に分析。既存研究が product 軸（静止画→高精度）と holistic-video 軸（生動画→ベンチマーク勝者）を採掘済みで、explicit な3D手キネマティクスを process チャンネルとして使う余地が未開拓であると特定。Ishchenko による product-bias のほぼ実証を踏まえ、GRSで戦わず process-OSATS/形成的FB/intermediate弁別を狙う方針に。手姿勢非依存で公開データのみで回る Stage 0（時間位置スタディ＋OSATSカテゴリ別分解）から着手する判断。
+
+作成したページ:
+- `wiki/concepts/プロセス vs 成果の信号分解.md` — 5ソース横断の合成的考察（product↔process地図、product-bias格上げ、process狙いどころ、3D手キネマティクスの継ぎ目、Stage 0要点）
+
+更新したページ:
+- `wiki/index.md` — 新規コンセプトを一覧に追加
+
+リポジトリ外への持ち出し用（コードリポジトリへ移送予定、wikiリンク非依存の自己完結md）:
+- `research-plan/README.md` — 全体像・テーゼ・ロードマップ
+- `research-plan/01-related-work.md` — 5論文の product↔process 整理＋ツール群
+- `research-plan/02-stage0-experiments.md` — Stage 0a/0b/0c＋手姿勢プローブ＋方法論ガードレール＋判定基準
+
 ## [2026-05-26] ingest | 縫合品質分類における転移学習の有効性評価（Ishchenko et al. 2025）
 
 `raw/jimaging-11-00266.md`（Ishchenko et al., V.K. Gusak Institute / Lomonosov MSU, *J. Imaging* 2025, 11, 266）を取り込み。**縫合結果の静止画像**から品質を**2値分類**する画像（成果）ベースの手法で、8つのImageNet事前学習CNN（ResNet50V2・DenseNet121・Xception・EfficientNetB0・MobileNetV3Large・VGG16/19・InceptionV3）を5-fold交差検証で系統比較。F1の群間差は全タスク非有意のため、安定性を考慮した独自スコア Score_adj で順位付け。IOVS/ILSはF1>0.90、最難のCOOSは0.79（ImageNetからのドメインシフト）。[[concepts/GradCAM]]でステッチ・結び目・組織縁への注目を確認。[[sources/Automated measurement extraction for suture quality]]（計測値抽出）と同じ画像ベースだがエンドツーエンド分類である点が対照的。
