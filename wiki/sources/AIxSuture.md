@@ -109,6 +109,10 @@ sources: [AIxSuture:vision-based-assessment-of-open-suturing-skills.md]
 - 学習率スケジューラ等の最適化は意図的に行わず、ベースラインとしての結果を提示
 - データセットの制限: 訓練前後の設計上、intermediate・expert（GRS > 32）のデータが少ない
 
+## 後続研究
+
+同じグループ（NCT Dresden / RWTH Aachen）が本データセットを拡張し、MICCAI 2024/2025のチャレンジ[[sources/OSS Challenge]]を開催した。expertデータの追加収録、4クラス分類（expert新設）、キーポイントトラッキングタスクの導入など。
+
 ## 関連する概念・エンティティ
 
 - [[concepts/外科技術自動評価]]
@@ -117,3 +121,4 @@ sources: [AIxSuture:vision-based-assessment-of-open-suturing-skills.md]
 - [[entities/Temporal Segment Network]]
 - [[entities/I3D]]
 - [[entities/Video Swin Transformer]]
+- [[sources/OSS Challenge]]

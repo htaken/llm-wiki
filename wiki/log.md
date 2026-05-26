@@ -6,6 +6,27 @@ updated: 2026-05-26
 
 # 操作ログ
 
+## [2026-05-26] update | OSS Challenge チーム別成否分析
+
+クエリ「各チームのうまくいった点・うまくいかなかった点」への回答を、`wiki/sources/OSS Challenge.md` に「チーム別 成否分析」セクションとして追記（主要結果と考察の間）。論文Discussionに基づき全チーム（ベースライン含む）を ✅/❌ で整理し、全体を貫く4つの教訓を付記。
+
+## [2026-05-26] ingest | OSS: Open Suturing Skills Challenge 2024-2025
+
+`raw/2605.22200v1.md`（Hoffmann et al., NCT Dresden / RWTH Aachen ほか）を取り込み。開放手術縫合スキルの動画ベース自動評価を競う初の専用チャレンジ（MICCAI 2024/2025 EndoVisサブチャレンジ）の総括論文。既存の[[sources/AIxSuture]]の直接の後続研究にあたる。3タスク（GRS 4クラス分類／OSATS 8カテゴリ予測／キーポイントトラッキング）、X3D-Mベースライン、9チーム17モデルの比較が要点。汎用動画モデルがトラッキング系を上回ること、product-bias仮説、OSATS予測の難しさ、トラッキングの困難さといった知見を既存の外科技術自動評価・AIxSuture・OSATSページに統合した。
+
+作成したページ:
+- `wiki/sources/OSS Challenge.md` — ソース要約（チャレンジ設計、評価指標、データセット拡張、ベースライン、全参加チーム手法、2024/2025の結果、product-bias考察、結論）
+- `wiki/entities/X3D.md` — ベースラインの効率的3D CNN（X3D-M、Kinetics-400事前学習、両年で最高性能）
+- `wiki/entities/Surgformer.md` — TimeSFormer拡張の外科動画Transformer（OSS 2024 Syangcw）
+- `wiki/concepts/HOTA.md` — 検出/局所化/関連付けを統合するMOT指標（Task 3でユークリッド距離版）
+
+更新したページ:
+- `wiki/entities/AIxSuture データセット.md` — OSSチャレンジでの拡張節（expert追加収録、データセット版テーブル、2025追加、Task 3キーポイント注釈、3vs4クラスの差異）
+- `wiki/entities/OSATS.md` — 8カテゴリの列挙、GRSベース3クラス（AIxSuture）vs 4クラス（OSS, expert新設）の対比、OSATS予測の難しさとICC値、GRSをaliasに追加
+- `wiki/concepts/外科技術自動評価.md` — OSSベンチマーク知見（動画モデルvsトラッキング、product-bias仮説、product/process、Task 3トラッキング困難）を追記
+- `wiki/sources/AIxSuture.md` — 後続研究としてOSS Challengeをリンク
+- `wiki/index.md` — ソース1・エンティティ2・コンセプト1を追加
+
 ## [2026-05-26] ingest | SAM 3: Segment Anything with Concepts
 
 `raw/585895112_1502482260871702_2839727966936571770_n.md`（Carion et al., Meta Superintelligence Labs）を取り込み。コンセプトプロンプト（名詞句・画像exemplar）で画像・動画中の概念に一致する全インスタンスを検出・セグメント・追跡する統合モデル SAM 3 の原論文。新タスク PCS の定式化、PEバックボーン共有のDETR検出器＋SAM2トラッカー、presence head、AIアノテーターを用いたデータエンジン、SA-Coデータセット・ベンチマークが要点。Meta繋がりの既存 Sapiens2（PEを比較ベースラインに含む）、既存のインスタンスセグメンテーション概念と接続した。ユーザー確認により DETR・SAM 2 も独立エンティティ化（最も網羅的な範囲）。

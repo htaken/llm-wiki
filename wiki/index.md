@@ -8,6 +8,7 @@ updated: 2026-05-26
 
 ## ソース
 - [[sources/AIxSuture]] — 開放手術の縫合技術を動画ベースで自動評価する初のエンドツーエンド手法。AIxSutureデータセットとTSN+I3D/Video Swinベンチマーク
+- [[sources/OSS Challenge]] — 開放手術縫合スキルの動画ベース評価の初の専用チャレンジ（MICCAI 2024-2025）。GRS分類・OSATS予測・キーポイントトラッキングの3タスク
 - [[sources/Automated measurement extraction for suture quality]] — 縫合画像からの幾何学的計測値自動抽出システム（Mask R-CNN + 線形割当）
 - [[sources/SQL基礎まとめ]] — SQLの基本構文と主要概念（エイリアス、制約、INDEX、VIEW、CTE、トランザクション、ウィンドウ関数）
 - [[sources/Pythonのプロジェクト管理ツール uv のv0.5.3までの便利な機能]] — uv v0.5.3までの依存関係まわりの便利機能（index指定、environment markers、optional-deps、dependency-groups、build isolation）
@@ -45,6 +46,8 @@ updated: 2026-05-26
 - [[entities/Perception Encoder]] — SAM 3の共有バックボーン。整合した画像・テキストエンコーダの視覚言語Transformer（PE、Meta）
 - [[entities/DETR]] — object queryと二部マッチングで物体検出を集合予測化するTransformer。SAM 3検出器の基盤
 - [[entities/SAM 2]] — 点/ボックス/マスクで1物体を画像・動画でセグメントするSAM 3の前身（PVS、Meta）
+- [[entities/X3D]] — 2D CNNを多軸で段階拡張した効率的3D CNN。OSSチャレンジのベースライン（X3D-M）
+- [[entities/Surgformer]] — TimeSFormer拡張の外科動画Transformer（HTA+ASA）。OSS 2024 Syangcwが採用
 
 ## コンセプト
 - [[concepts/インスタンスセグメンテーション]] — 画像中の各オブジェクトを個別にセグメンテーションするタスク
@@ -72,3 +75,4 @@ updated: 2026-05-26
 - [[concepts/人物中心視覚]] — 人間を対象とする視覚タスク群と基盤モデルのスケール3軸
 - [[concepts/Promptable Concept Segmentation]] — 名詞句・画像exemplarで全インスタンスを検出・セグメント・追跡するタスク（PCS、SAM 3）。PVSとの対比
 - [[concepts/データエンジン]] — モデル・人間・AIアノテーターのループで注釈データを反復生成する仕組み（AI verifierでスループット2倍）
+- [[concepts/HOTA]] — 検出・局所化・関連付けを統合するMOT評価指標。OSSチャレンジTask 3でユークリッド距離版を採用
