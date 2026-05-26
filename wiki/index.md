@@ -15,6 +15,7 @@ updated: 2026-05-26
 - [[sources/WiLoR]] — 手検出と3D再構成を統合したフルスタック手法の原論文。WHIMデータセット＋multi-scale refinement（Imperial/SJTU、CVPR25、arXiv 2409.12259v2）
 - [[sources/MediaPipe ソリューション ガイド]] — GoogleのオンデバイスML スイートMediaPipe Solutionsの公式概要（ソリューション一覧・対応表・レガシー移行）
 - [[sources/SAPIENS2]] — 人物中心視覚の高解像度Transformer基盤モデル（0.4B〜5B、MAE+CLハイブリッド事前学習、1K/4K、Meta、arXiv 2604.21681v1）
+- [[sources/SAM 3]] — コンセプトプロンプト（名詞句・画像exemplar）で全インスタンスを検出・セグメント・追跡する統合モデル。PCSタスク＋SA-Coデータエンジン（Meta Superintelligence Labs）
 
 ## エンティティ
 - [[entities/AIxSuture データセット]] — 314本の開放手術縫合訓練動画データセット（OSATS評価付き）
@@ -39,6 +40,11 @@ updated: 2026-05-26
 - [[entities/MediaPipe]] — Google製のオンデバイスAI/MLソリューションスイート（Tasks/Model Maker/Studio、4プラットフォーム対応）
 - [[entities/Sapiens2]] — Meta製の人物中心視覚基盤モデルファミリー（0.4B〜5B、1K/4K、308点姿勢・29クラスseg・法線・pointmap・albedo）
 - [[entities/Humans-1B データセット]] — Sapiens2事前学習用の約10億枚高品質人物画像（4Bから多段フィルタでキュレーション）
+- [[entities/SAM 3]] — コンセプトプロンプトで全インスタンスを検出・セグメント・追跡する約850Mモデル（PEバックボーン＋DETR検出器＋SAM2トラッカー、Meta）
+- [[entities/SA-Co]] — SAM 3のデータセット＋ベンチマーク（HQ/SYN/EXT/VIDEO、207Kユニーク概念、既存比>50×）
+- [[entities/Perception Encoder]] — SAM 3の共有バックボーン。整合した画像・テキストエンコーダの視覚言語Transformer（PE、Meta）
+- [[entities/DETR]] — object queryと二部マッチングで物体検出を集合予測化するTransformer。SAM 3検出器の基盤
+- [[entities/SAM 2]] — 点/ボックス/マスクで1物体を画像・動画でセグメントするSAM 3の前身（PVS、Meta）
 
 ## コンセプト
 - [[concepts/インスタンスセグメンテーション]] — 画像中の各オブジェクトを個別にセグメンテーションするタスク
@@ -64,3 +70,5 @@ updated: 2026-05-26
 - [[concepts/RGB-D深度融合]] — RGBと深度を双方向クロスアテンションで統合し深度方向の曖昧性を解消
 - [[concepts/自己教師あり学習]] — MIM（MAE）とCLの2系統、およびSapiens2のMAE+CLハイブリッド統一目的
 - [[concepts/人物中心視覚]] — 人間を対象とする視覚タスク群と基盤モデルのスケール3軸
+- [[concepts/Promptable Concept Segmentation]] — 名詞句・画像exemplarで全インスタンスを検出・セグメント・追跡するタスク（PCS、SAM 3）。PVSとの対比
+- [[concepts/データエンジン]] — モデル・人間・AIアノテーターのループで注釈データを反復生成する仕組み（AI verifierでスループット2倍）

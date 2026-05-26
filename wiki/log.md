@@ -6,6 +6,25 @@ updated: 2026-05-26
 
 # 操作ログ
 
+## [2026-05-26] ingest | SAM 3: Segment Anything with Concepts
+
+`raw/585895112_1502482260871702_2839727966936571770_n.md`（Carion et al., Meta Superintelligence Labs）を取り込み。コンセプトプロンプト（名詞句・画像exemplar）で画像・動画中の概念に一致する全インスタンスを検出・セグメント・追跡する統合モデル SAM 3 の原論文。新タスク PCS の定式化、PEバックボーン共有のDETR検出器＋SAM2トラッカー、presence head、AIアノテーターを用いたデータエンジン、SA-Coデータセット・ベンチマークが要点。Meta繋がりの既存 Sapiens2（PEを比較ベースラインに含む）、既存のインスタンスセグメンテーション概念と接続した。ユーザー確認により DETR・SAM 2 も独立エンティティ化（最も網羅的な範囲）。
+
+作成したページ:
+- `wiki/sources/SAM 3.md` — ソース要約（PCSタスク、アーキ、データエンジン4フェーズ、SA-Co、主要結果、アブレーション、限界）
+- `wiki/entities/SAM 3.md` — モデル本体（約850M、検出器/presence token/トラッカー、4ステージ学習、性能）
+- `wiki/entities/SA-Co.md` — データセット＋ベンチマーク（HQ/SYN/EXT/VIDEO、Gold/Silver/Bronze/Bio/VEval、cgF1指標、オントロジー）
+- `wiki/entities/Perception Encoder.md` — 共有バックボーン（PE、エンコーダ比較表）
+- `wiki/entities/DETR.md` — 検出器基盤（object query集合予測、MDETR、SAM 3採用の変種）
+- `wiki/entities/SAM 2.md` — 前身モデル（PVS、Hiera、メモリバンク、SAM系譜表）
+- `wiki/concepts/Promptable Concept Segmentation.md` — PCSタスク定義、PVSとの対比、曖昧性、MLLM拡張
+- `wiki/concepts/データエンジン.md` — model/AI-in-the-loop アノテーション、MV/EV verifier、4フェーズ、スループット
+
+更新したページ:
+- `wiki/entities/Sapiens2.md` — dense probing比較のPEをリンク化、関連にPerception Encoder追加
+- `wiki/concepts/インスタンスセグメンテーション.md` — DETR系/SAM 3を代表手法・関連に追記
+- `wiki/index.md` — ソース1・エンティティ5・コンセプト2を追加
+
 ## [2026-05-26] ingest | SAPIENS2: 人物中心視覚のための高解像度Transformerファミリー
 
 `raw/2604.21681v1.md`（Khirodkar et al., Meta Reality Labs）を取り込み。人物中心視覚の高解像度Transformer基盤モデル Sapiens2 の原論文。GitHub リポジトリ（facebookresearch/sapiens2）も WebFetch で調査し、論文未記載の補足（追加の0.1Bモデル、human mattingタスク、Sapiens2ライセンス、Python≥3.12/PyTorch≥2.7・最小依存）を取得。人物中心視覚＝外科AI／手姿勢推定とは別の新領域だが、308点姿勢に手40点を含む点・Self-Attention（GQA/windowed/QK-Norm）で既存ページと接続した。
