@@ -1,7 +1,7 @@
 ---
 title: Index
 type: index
-updated: 2026-05-11
+updated: 2026-05-26
 ---
 
 # Wiki Index
@@ -11,6 +11,8 @@ updated: 2026-05-11
 - [[sources/Automated measurement extraction for suture quality]] — 縫合画像からの幾何学的計測値自動抽出システム（Mask R-CNN + 線形割当）
 - [[sources/SQL基礎まとめ]] — SQLの基本構文と主要概念（エイリアス、制約、INDEX、VIEW、CTE、トランザクション、ウィンドウ関数）
 - [[sources/Pythonのプロジェクト管理ツール uv のv0.5.3までの便利な機能]] — uv v0.5.3までの依存関係まわりの便利機能（index指定、environment markers、optional-deps、dependency-groups、build isolation）
+- [[sources/AnyHand]] — RGB(-D) 3D手姿勢推定のための大規模合成データセット。共訓練でHaMeR/WiLoRをSOTAに（UCSD他、arXiv 2603.25726v2）
+- [[sources/WiLoR]] — 手検出と3D再構成を統合したフルスタック手法の原論文。WHIMデータセット＋multi-scale refinement（Imperial/SJTU、CVPR25、arXiv 2409.12259v2）
 
 ## エンティティ
 - [[entities/AIxSuture データセット]] — 314本の開放手術縫合訓練動画データセット（OSATS評価付き）
@@ -25,6 +27,13 @@ updated: 2026-05-11
 - [[entities/PyTorch]] — 深層学習ライブラリ。非PyPI index指定の代表例として扱う
 - [[entities/PyPI]] — Python公式パッケージリポジトリ。uvのデフォルトindex
 - [[entities/flash-attention]] — メモリ効率の良いAttention実装。build isolation無効化の代表例
+- [[entities/AnyHand データセット]] — 大規模合成RGB-D手データセット（単一手2.5M+手物体4.1M枚）
+- [[entities/HaMeR]] — ViTでMANOを直接回帰する手メッシュ復元モデル（CVPR24）
+- [[entities/WiLoR]] — 手検出＋3D再構成のフルスタックモデル。multi-scale refinementでRGB SOTA（CVPR25）
+- [[entities/WHIM データセット]] — 2M枚のin-the-wild手検出データセット。YouTube動画から自動アノテーション（WiLoR）
+- [[entities/AnyHandNet-D]] — WiLoRに深度融合モジュールを足したRGB-Dモデル
+- [[entities/MANO]] — 手のパラメトリックモデル（形状β+ポーズ）。手姿勢推定の標準表現
+- [[entities/SAPIEN]] — AnyHandのレンダリング基盤となるシミュレーション環境（レイトレーシング）
 
 ## コンセプト
 - [[concepts/インスタンスセグメンテーション]] — 画像中の各オブジェクトを個別にセグメンテーションするタスク
@@ -44,3 +53,7 @@ updated: 2026-05-11
 - [[concepts/Optional Dependencies]] — `[project.optional-dependencies]` によるextras。uv 0.5.3でconflicts宣言が可能に
 - [[concepts/Dependency Groups]] — uv 0.4.27で導入された複数の開発用依存グループ
 - [[concepts/Build Isolation]] — PEP 517の隔離ビルドと、`no-build-isolation-package` / `dependency-metadata` による制御
+- [[concepts/3D手姿勢推定]] — RGB(-D)から手の3Dポーズ・形状を推定するタスク。MANO回帰とTransformerの系譜
+- [[concepts/手検出・ローカライゼーション]] — 画像中の手のbbox・左右を検出するタスク。FCN+PANet+anchor-freeでリアルタイム化
+- [[concepts/合成データとsim-to-realギャップ]] — 合成データによるスケーリングと実世界転移の課題
+- [[concepts/RGB-D深度融合]] — RGBと深度を双方向クロスアテンションで統合し深度方向の曖昧性を解消
