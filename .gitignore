@@ -6,3 +6,9 @@
 
 # .claude
 .claude
+
+*.md
+!README.md
+!CLAUDE.md
+!raw/*.md
+!wiki/*.md
