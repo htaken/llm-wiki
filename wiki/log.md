@@ -6,6 +6,76 @@ updated: 2026-05-26
 
 # 操作ログ
 
+## [2026-05-26] ingest | Using Hand Pose Estimation To Automate Open Surgery Training Feedback
+
+`raw/2211.07021v2.md`（Bkheet, D'Angelo, Goldbraikh, Laufer / Technion・Mayo Clinic, arXiv 2211.07021）を取り込み。**[[sources/ExpOS]] の2D手姿勢版の直接の前身**（同 Laufer 研、Goldbraikh は [[entities/Open Surgery Simulation データセット]] の著者でもある）。[[entities/YOLO|YOLO-X]] で手・器具を検出 → Simple Baseline で2D姿勢推定 → [[entities/MS-TCN++]] でジェスチャー/ツールをマルチタスク同時セグメンテーション（[[entities/I3D]] 多視点融合で **88.35% SOTA**、kinematic センサ 82.40% を凌駕）。さらにドメインエキスパートの助言を operationalize した **6つの[[concepts/外科スキルプロキシ]]**（手の回内/回外・親指-人差し指距離・指-組織距離・手速度・ジェスチャー所要時間）で novice vs expert を有意弁別し、**per-gesture の actionable feedback** を自動生成。
+
+**研究計画への含意**: 「手姿勢→process チャンネル→解釈可能な actionable feedback」という発想が **2026年の ExpOS ではなく 2022年の本論文に遡れる**ことを確定。[[concepts/プロセス vs 成果の信号分解]] の差別化軸（手姿勢の新規使用ではなく product/process 実証分解・OSATSカテゴリ別寄与・product-only 上界への増分価値）をさらに補強。本論文の「多視点2D姿勢で +1.23% → 3D なら上回りうる」「hand orientation は2Dゆえ単一視点に制約」という記述が、後続 ExpOS が [[entities/WiLoR]] で3D化した**動機の種**であることも判明。ユーザー選択により標準粒度で取り込み、research-plan/ にも反映。
+
+作成したページ:
+- `wiki/sources/手姿勢推定による開放手術トレーニングフィードバックの自動化.md` — ソース要約（モジュラーパイプライン・データセット・セグメンテーション結果表・6プロキシ・限界・不整合）
+- `wiki/concepts/外科スキルプロキシ.md` — Surgical Skill Proxy の定義・6プロキシの式と臨床的根拠・ExpOS/Kil との関係・研究計画含意
+- `wiki/entities/Open Surgery Simulation データセット.md` — Goldbraikh et al. の開放手術シミュレーションデータ（100動画/25臨床医、kinematic付き、OSS Challengeと別物）
+
+更新したページ:
+- `wiki/concepts/外科技術自動評価.md` — 「2D手姿勢＋スキルプロキシアプローチ（Bkheet et al.）」節を追加（ExpOS節の直前に配置し系譜を明示）
+- `wiki/concepts/プロセス vs 成果の信号分解.md` — product↔process地図にBkheet行を追加、手姿勢→process 系譜の起点として追記
+- `wiki/concepts/3D手姿勢推定.md` — 2D多視点→3D化の動機（+1.23%・hand orientation の2D制約）を追記
+- `wiki/entities/MS-TCN++.md` — マルチタスク・ジェスチャー/ツールセグメンテーションでの利用（ExpOS の特徴抽出器転用の前段）を追記
+- `wiki/entities/YOLO.md` — YOLOX-S による手2＋器具4検出を追記
+- `wiki/entities/WiLoR.md` — ExpOS の3D化が Bkheet の予想の帰結である旨を追記
+- `wiki/index.md` — ソース1・エンティティ1・コンセプト1を追加
+
+リポジトリ外への持ち出し用（research-plan/、ユーザー選択により01のみ更新）:
+- `research-plan/01-related-work.md` — product↔process地図にBkheet 2022を追加、「継ぎ目の現況」（手姿勢→process→feedback 系譜が2022年に遡れる旨）・「一次ソース一覧」を更新
+
+検出した不整合（各ページに併記）:
+- abstract/contributions は「6プロキシ」だが §3.4 は5つしか列挙せず（Thumb-Index Distance の2文脈使用で6の可能性、本文未明示）
+- 結論本文の frontal 姿勢 81.81% ⇔ Table 2 の frontal keypoints 81.22%
+
+## [2026-05-26] ingest | Assessment of Open Surgery Suturing Skill: Image-based Metrics Using Computer Vision
+
+`raw/1-s2.0-S1931720424001636-main.md`（Kil, Eidt, Singapogu, Groff / Clemson, *J Surg Ed* 2024）を取り込み。縫合シミュレータの**膜下カメラ**で針・糸運動を撮影し、CV（OpenCV/C++→MATLAB）で**画像ベースの幾何指標**を抽出。外科の格言「follow the curvature of the needle」を operationalize した**新規4指標**（Needle Tip Path Length / Tip Area / Swept Area / Sway Length）を定義。研修医7・指導医5の12名で、9指標中6指標が attending vs resident を有意弁別（Wilcoxon、針運動指標 > 時間・成果指標）。同グループの力・運動版（Kil et al. *Front Med* 2022）の画像ベース姉妹論文。深層学習を使わない純・process アプローチで、Wiki内で**最も明快な「過程信号だけで熟練度を弁別」実証**。ユーザー選択により概念1ページ追加の粒度で取り込み、research-plan/ にも反映。
+
+作成したページ:
+- `wiki/sources/開放手術縫合スキルの画像ベース計測.md` — ソース要約（シミュレータ・2段CVアルゴリズム・9指標・研究デザイン・結果・depth効果・指標間関係・研究計画への含意）
+- `wiki/concepts/針運動ベースのプロセス計測.md` — 4指標の定義・式・前処理（Butterworth+weeding）・相補性の思考実験・process/product文脈
+
+更新したページ:
+- `wiki/concepts/外科技術自動評価.md` — 「針運動ベースのプロセス計測アプローチ（Kil et al.）」節を追加、モーションベース例にリンク、sources/関連に追加
+- `wiki/concepts/プロセス vs 成果の信号分解.md` — product↔process地図に行追加、「intermediate仮説」を別角度から裏付ける純・process実証として追記、関連に追加
+- `wiki/index.md` — ソース1・コンセプト1を追加
+
+リポジトリ外への持ち出し用（research-plan/）:
+- `research-plan/01-related-work.md` — product↔process地図にKil 2024を追加（純・process実証、attending vs resident弁別、HW依存の留保、process指標の操作的定義）
+
+## [2026-05-26] ingest | ExpOS: Explainable Open-Surgery Skills Assessment Using 3D Hand Reconstruction
+
+`raw/2605.23653v1.md`（Papo, Smoller, Laufer / Technion, arXiv 2605.23653）を取り込み。[[entities/RoHans]]→[[entities/WiLoR]] で各手21関節の3D軌跡を抽出し、[[entities/MS-TCN++]] バックボーン＋多頭[[concepts/時間アテンションプーリング]]＋グローバル運動統計を融合MLPで回帰、開放手術3タスク（縫合/結紮/筋膜閉鎖、研修医221動画）のスキルを評価。[[concepts/SHAP]]（特徴帰属）と時間アテンション（時間局在）の二層解釈性。[[concepts/順序回帰|SORD損失]]採用。Fascial Closure r=0.778, R²=0.74。
+
+**最重要の含意**: ExpOS は [[concepts/プロセス vs 成果の信号分解]] と `research-plan/` が「未採掘の継ぎ目」と特定していた方向（現代的3D手再構成を process チャンネルに使う）を先取り。新規性主張 #1（3D手の初適用）・#5（弱教師あり時間アテンションで feedback）は**取られた**。#3（product-bias 実証分解）・#4（OSATSカテゴリ別分解）・#2残余（product-only上界への増分価値）・公開データ再現は**生存**。研究計画を「動くか」から「成果から独立に効くか」へ repositioning。
+
+作成したページ:
+- `wiki/sources/ExpOS.md` — ソース要約（パイプライン・特徴・フレームワーク・二層解釈性・結果・研究計画への含意）
+- `wiki/entities/RoHans.md` — 手術室向け頑健手検出（同著者、YOLO自己訓練）
+- `wiki/entities/MS-TCN++.md` — 多段拡張時間畳み込みネット（特徴抽出器として転用）
+- `wiki/entities/YOLO.md` — one-stageリアルタイム物体検出（器具・手検出のワークホース）
+- `wiki/concepts/SHAP.md` — Shapley値ベースの事後特徴帰属（GradCAMと対比）
+- `wiki/concepts/順序回帰.md` — 順序ラベル学習とSORD損失
+
+更新したページ:
+- `wiki/concepts/プロセス vs 成果の信号分解.md` — 「ExpOSによる占有」節を追加、product↔process地図に追記、新規性主張の repositioning
+- `wiki/concepts/外科技術自動評価.md` — 「3D手キネマティクス＋解釈性アプローチ（ExpOS）」節を追加
+- `wiki/concepts/時間アテンションプーリング.md` — 多頭アテンションプーリング変種・[CLS]アナロジーを追記
+- `wiki/concepts/3D手姿勢推定.md` — 下流応用（外科スキル評価）を追記
+- `wiki/entities/WiLoR.md` — 外科スキル評価への応用（ExpOS）を追記
+- `wiki/index.md` — 新規ページを一覧に追加
+
+リポジトリ外への持ち出し用（research-plan/、ExpОSを反映して改訂）:
+- `research-plan/README.md` — 冒頭に重要更新、テーゼ・最大リスクを repositioning
+- `research-plan/01-related-work.md` — 地図にExpOS追加、「継ぎ目の現況」へ改訂
+- `research-plan/03-prior-art-prompt.md` — 既把握文献にExpOS（最重要の脅威）を追加
+
 ## [2026-05-26] query | 開放縫合スキル評価の手法的余地（壁打ち→研究方針）
 
 クエリ「OSS Challengeで多くの手法が試された中、新規に開拓する余地のある手法を壁打ちで考えたい」を受け、外科スキル評価5ソース（[[sources/AIxSuture]]・[[sources/OSS Challenge]]・[[sources/Automated measurement extraction for suture quality]]・[[sources/縫合品質分類における転移学習の有効性評価]]・[[sources/開放手術スキルの時空間特徴ML評価]]）と手姿勢/セグメンテーション系ツール群（[[entities/WiLoR]]・[[entities/HaMeR]]・[[sources/AnyHand]]・[[entities/SAM 3]]・[[entities/Sapiens2]]・[[entities/MediaPipe]]）を横断的に分析。既存研究が product 軸（静止画→高精度）と holistic-video 軸（生動画→ベンチマーク勝者）を採掘済みで、explicit な3D手キネマティクスを process チャンネルとして使う余地が未開拓であると特定。Ishchenko による product-bias のほぼ実証を踏まえ、GRSで戦わず process-OSATS/形成的FB/intermediate弁別を狙う方針に。手姿勢非依存で公開データのみで回る Stage 0（時間位置スタディ＋OSATSカテゴリ別分解）から着手する判断。

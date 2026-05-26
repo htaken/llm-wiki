@@ -19,6 +19,9 @@ updated: 2026-05-26
 - [[sources/SAM 3]] — コンセプトプロンプト（名詞句・画像exemplar）で全インスタンスを検出・セグメント・追跡する統合モデル。PCSタスク＋SA-Coデータエンジン（Meta Superintelligence Labs）
 - [[sources/開放手術スキルの時空間特徴ML評価]] — AIxSutureデータセットにCNN-LSTMハイブリッド（fine-tuned ResNet50 + BiLSTM + アテンション）を適用し、マクロF1 0.82でI3D/Swinベンチマークを上回る（UCLA, Alipour et al. 2026）
 - [[sources/縫合品質分類における転移学習の有効性評価]] — 縫合結果画像から品質を2値分類。8つのImageNet事前学習CNNを5-fold CV比較、安定性考慮スコア+GradCAM。F1>0.90（IOVS/ILS）（Ishchenko et al., J. Imaging 2025）
+- [[sources/ExpOS]] — WiLoR 3D手再構成＋MS-TCN++＋多頭アテンション＋SHAPで開放手術スキルを解釈可能に回帰評価。r=0.778（筋膜閉鎖）。研究計画の「未採掘の継ぎ目」を占有した最重要先行研究（Papo et al. Technion, arXiv 2605.23653）
+- [[sources/開放手術縫合スキルの画像ベース計測]] — シミュレータ膜下カメラの針運動から手作り幾何指標を抽出する純・processアプローチ。新規4指標で研修医 vs 指導医を弁別。「follow the curvature of the needle」をoperationalize（Kil et al. Clemson, J Surg Ed 2024）
+- [[sources/手姿勢推定による開放手術トレーニングフィードバックの自動化]] — 2D手姿勢＋スキルプロキシで開放手術技量を評価。ジェスチャーセグメンテーションSOTA 88.35%、per-gestureのactionable feedback。ExpOSの2D前身（Bkheet et al. Technion/Laufer研, arXiv 2211.07021）
 
 ## エンティティ
 - [[entities/AIxSuture データセット]] — 314本の開放手術縫合訓練動画データセット（OSATS評価付き）
@@ -52,6 +55,10 @@ updated: 2026-05-26
 - [[entities/Surgformer]] — TimeSFormer拡張の外科動画Transformer（HTA+ASA）。OSS 2024 Syangcwが採用
 - [[entities/ResNet50]] — 残差学習の50層2D CNN。空間特徴抽出器の定番。Alipour et al.でAIxSutureにfine-tuning
 - [[entities/CNN-LSTMハイブリッドモデル]] — ResNet50 + 双方向LSTM + アテンションで空間と時間を分離する開放手術スキル分類モデル（マクロF1 0.82）
+- [[entities/MS-TCN++]] — 多段拡張時間畳み込みのアクションセグメンテーションネット。ExpOSの時間バックボーン（特徴抽出器）（Li et al. 2020）
+- [[entities/RoHans]] — 手術室向けの頑健な手検出。YOLO検出器をpseudo-label自己訓練でrefine。ExpOSでWiLoRの前段（Papo et al. 2025、同Laufer研）
+- [[entities/YOLO]] — one-stageリアルタイム物体検出。外科映像の器具・手検出のワークホース（Ultralytics）
+- [[entities/Open Surgery Simulation データセット]] — Goldbraikh et al.の開放手術シミュレーション動画＋kinematicデータ（100動画/25臨床医）。Bkheet et al.が2D手姿勢を追加注釈。OSS Challengeとは別物
 
 ## コンセプト
 - [[concepts/インスタンスセグメンテーション]] — 画像中の各オブジェクトを個別にセグメンテーションするタスク
@@ -83,4 +90,8 @@ updated: 2026-05-26
 - [[concepts/HOTA]] — 検出・局所化・関連付けを統合するMOT評価指標。OSSチャレンジTask 3でユークリッド距離版を採用
 - [[concepts/LSTM]] — ゲート機構で長距離時間依存を学習するRNN。双方向LSTMで前後文脈を統合（外科動画の時間モデル化）
 - [[concepts/時間アテンションプーリング]] — 系列を重要度重み付き加重和で1ベクトルに集約する軽量ソフトアテンション。解釈性も提供
-- [[concepts/プロセス vs 成果の信号分解]] — 開放縫合スキル評価を product（成果）/process（過程）信号に分解する分析フレーム。product-bias の実証分解と未開拓の3D手キネマティクス方向（研究方針）
+- [[concepts/プロセス vs 成果の信号分解]] — 開放縫合スキル評価を product（成果）/process（過程）信号に分解する分析フレーム。product-bias の実証分解、ExpOSによる3D手キネマティクス方向の占有と研究計画の repositioning（研究方針）
+- [[concepts/SHAP]] — Shapley値ベースの事後特徴帰属。ExpOSのグローバル特徴解釈に利用。GradCAMと対の関係
+- [[concepts/順序回帰]] — 順序ラベル（スキルレベル）の学習。SORD損失で近いクラスへの誤りを軽く罰する（ExpOS採用）
+- [[concepts/針運動ベースのプロセス計測]] — 縫合中の針運動から計算する解釈可能な幾何指標（Tip Path Length/Tip Area/Swept Area/Sway Length）。「follow the curvature of the needle」を定量化した純・process信号
+- [[concepts/外科スキルプロキシ]] — 動画の器具＋手姿勢から計算でき実行者に説明できる解釈可能なmetric。Bkheetの6プロキシ（手の回内/指距離/手-組織距離/手速度等）でnovice vs expertを弁別しactionable feedback。ExpOSの学習ベース後継へ

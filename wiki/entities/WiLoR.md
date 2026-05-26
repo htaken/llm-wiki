@@ -77,6 +77,12 @@ WiLoR は元々の訓練コーパスが大きく refinement も持つため、An
 
 RGB-D モデル [[entities/AnyHandNet-D]] は WiLoR の RGB-only パイプラインの上に軽量な深度融合モジュール（[[concepts/RGB-D深度融合]]）を追加して構築される。融合モジュールは modular に設計され、WiLoR のような ViT ベースアーキテクチャに最小限の変更で統合できる。
 
+## 外科スキル評価への応用（ExpOS）
+
+[[sources/ExpOS]]（Papo et al., Technion）は、WiLoR を**開放手術スキル評価の process チャンネルとして用いた初の事例**。[[entities/RoHans]] で手術室向けに refine した手検出器を WiLoR に統合し、各手21関節の3D軌跡を抽出して時間モデル（[[entities/MS-TCN++]]）に通す。これは [[concepts/プロセス vs 成果の信号分解]] が「誰も試していない」と特定した方向の実装にあたる。なお WiLoR 論文自身が懸念した手袋・特異視点・器具オクルージョンの困難に、ExpOS は RoHans の自己訓練でドメイン適応して対処している。
+
+この 3D 化は突然出てきたものではなく、同 Laufer 研の2D前身 [[sources/手姿勢推定による開放手術トレーニングフィードバックの自動化|Bkheet et al. 2022]] が「**多視点2D姿勢で +1.23% → 3D姿勢なら上回りうる**」と予想し、hand orientation プロキシの2D制約を限界に挙げていた流れの帰結である。WiLoR はその予想に応える 3D バックエンドとして選ばれた。
+
 ## 関連
 
 - [[sources/WiLoR]] — 原論文
@@ -84,4 +90,6 @@ RGB-D モデル [[entities/AnyHandNet-D]] は WiLoR の RGB-only パイプライ
 - [[concepts/手検出・ローカライゼーション]] — 検出モジュールの概念
 - [[entities/HaMeR]] — もう一方の代表ベースライン、同系統の先行 SOTA
 - [[entities/AnyHandNet-D]] — WiLoR を拡張した RGB-D モデル
+- [[sources/ExpOS]] — WiLoR を開放手術スキル評価に応用した初の事例
+- [[entities/RoHans]] — ExpOS で前段に置く手術室向け手検出
 - [[entities/MANO]] / [[concepts/3D手姿勢推定]]
